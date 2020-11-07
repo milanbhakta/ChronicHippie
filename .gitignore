@@ -1,5 +1,6 @@
 
-PRIVATE/
+PRIVATE/db_credentials.php
+PRIVATE/initialize.php
 
 
 PUBLIC/img
