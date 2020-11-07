@@ -1,0 +1,10 @@
+
+PRIVATE/
+
+
+PUBLIC/img
+PUBLIC/vendor
+PUBLIC/fonts/.DS_Store 
+
+.htaccess
+*.txt
