@@ -122,8 +122,8 @@
                 </div>
                 <?php endif?>
                 <!-- <?php if($product['inventory_quantity']>0):?>
-                  <div class="product-badge product-available mt-n-3"><i class="czi-security-check"></i>Product available</div>
-                  <?php endif;?> -->
+                  <div class="product-badge product-available mt-n-3"><i class="czi-security-check"></i>Product available</div>-->
+                  <?php endif;?> 
                   
                   
                 </div>

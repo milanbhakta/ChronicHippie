@@ -229,8 +229,8 @@ if(!empty($_FILES)){
                             
                 </div>
               </div>
-              <br>
-              <br>
+              <br/>
+              <br/>
               <div class="card">
                 <div class="card-body">
                 <h5 class="card-title">Pricing</h5>
@@ -257,7 +257,7 @@ if(!empty($_FILES)){
                   <label class="custom-control-label" class="font-weight-medium" for="customSwitch1"><span class="font-weight-medium">This Product has Multiple Prices</span></label>
                 </div>
 
-                br/>
+               <br/>
                 <div class="table-responsive" id="pricess"  style="display: none;">
                 <table class="table table-striped">
                   <thead;>
@@ -312,7 +312,7 @@ if(!empty($_FILES)){
               </div>
                 
                 
-                <
+                
                                   <br/>
                               <div class="form-group py-2">
                                 <label class="font-weight-medium" for="unp-product-quantity">Inventory Quantity</label>

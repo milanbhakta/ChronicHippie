@@ -127,6 +127,7 @@
                                         
                                         
                                         }
+
                                   function prices() {
                                     // Get the checkbox
                                     var checkBox = document.getElementById("customSwitch1");
@@ -142,13 +143,7 @@
                                     }
                                   }
 
-                                  document.ready(){
-                                    function closealert(){
-        setTimeout(() => {
-          jQuery("#closealert").remove();
-        }, 100);
-      }
-                                  }
+                                  
                                   
 
                                       </script>
