@@ -126,26 +126,43 @@
                                         }
                                         
                                         
+                                 
                                         }
 
                                   function prices() {
                                     // Get the checkbox
-                                    var checkBox = document.getElementById("customSwitch1");
+                                    var checkBox = document.getElementById("ex-check-1");
                                     // Get the output text
-                                    var prices = document.getElementById("pricess");
+                                    var prices = document.getElementById("options");
 
                                     // If the checkbox is checked, display the output text
                                     if (checkBox.checked == true){
-                                      prices.style.display = "block";
+                                          prices.style.display = "block";
+                                          jQuery(".js-example-tokenizer").select2({
+                                          placeholder: "Seperate options with comma",
+                                          tags: true,
+                                          tokenSeparators: [','],   
+                                    });
                                       //document.getElementById("hasprices").value="hasprices";
                                     } else {
                                       prices.style.display = "none";
                                     }
+
+
                                   }
 
-                                  
-                                  
+                                  function calldata(){
+                                    var data= jQuery('.js-example-tokenizer').select2('data');
+                                    var d=JSON.stringify(data);
+                                    alert("added "+data["text"]);
 
+                                  }
+
+                                  jQuery('.js-example-tokenizer').on('select2:unselect', function (e) {
+                                      var data = e.params.data;
+                                      alert("Removed"+JSON.stringify(data['text']));
+                                  });
+  
                                       </script>
     <script src="vendor/jquery/dist/jquery.slim.min.js"></script>
     <script src="vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -153,6 +170,8 @@
     <script src="vendor/simplebar/dist/simplebar.min.js"></script>
     <script src="vendor/tiny-slider/dist/min/tiny-slider.js"></script>
     <script src="vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
     <!-- Main theme script-->
     <script src="js/theme.min.js"></script>
   </body>

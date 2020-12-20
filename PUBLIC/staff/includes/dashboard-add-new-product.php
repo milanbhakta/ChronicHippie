@@ -144,15 +144,6 @@ if(!empty($_FILES)){
       
   
   }
- 
-
-
-
-
-
-
-
-
 
 ?>
     <!-- Page title-->
@@ -251,12 +242,14 @@ if(!empty($_FILES)){
                   </div>
                 </div>
                 <br/>
+                <hr>
+            
                 <div class="custom-control custom-switch">
                
                    <input type="checkbox" name="hasprices" disabled  class="custom-control-input" id="customSwitch1" onclick="prices();">
                   <label class="custom-control-label" class="font-weight-medium" for="customSwitch1"><span class="font-weight-medium">This Product has Multiple Prices</span></label>
                 </div>
-
+                       
                <br/>
                 <div class="table-responsive" id="pricess"  style="display: none;">
                 <table class="table table-striped">
@@ -314,6 +307,25 @@ if(!empty($_FILES)){
                 
                 
                                   <br/>
+                                  <div class="card">
+                <div class="card-body">
+                <h5 class="card-title">Variants</h5>
+
+                        <div class="custom-control custom-checkbox">
+                          <input class="custom-control-input" type="checkbox" id="ex-check-1" onclick="prices();">
+                          
+                          <label class="custom-control-label" for="ex-check-1"><span class="font-weight-medium">This Product has Multiple Prices</span></label>
+                        </div>
+                      
+                      <div id="options" style="display: none;">
+                      <hr >
+                      <br>
+                      <label  class="label" for="s"><span class="font-weight-medium">Options</span></label>
+                      <select name="multipleprices" id="s" class="form-control js-example-tokenizer"   multiple="multiple" onchange="calldata();"></select> 
+                      </div>
+
+                </div>
+                </div>
                               <div class="form-group py-2">
                                 <label class="font-weight-medium" for="unp-product-quantity">Inventory Quantity</label>
                                 <input type="text" class="form-control" required id="unp-product-quantity" name="quantity" disabled value='0';>
