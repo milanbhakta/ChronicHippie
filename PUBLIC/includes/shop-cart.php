@@ -57,7 +57,7 @@
               <div class="media-body pt-2">
                 <h3 class="product-title font-size-base mb-2"><a href="shop-single-v1.html"><?=$product['title']?></a></h3>
                 <div class="font-size-sm"><span class="text-muted mr-2">Size:</span><?=$item['size']?></div>
-                <div class="font-size-sm"><span class="text-muted mr-2">Color:</span>White &amp; Blue</div>
+                <!-- <div class="font-size-sm"><span class="text-muted mr-2">Color:</span>White &amp; Blue</div> -->
                 <?php
                  $p="";
                  $size=$item['size'];
