@@ -9,8 +9,8 @@
         <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start">
-              <li class="breadcrumb-item"><a class="text-nowrap" href="index.html"><i class="czi-home"></i>Home</a></li>
-              <li class="breadcrumb-item text-nowrap"><a href="shop-grid-ls.html">Shop</a>
+              <li class="breadcrumb-item"><a class="text-nowrap" href=""><i class="czi-home"></i>Home</a></li>
+              <li class="breadcrumb-item text-nowrap"><a href="">Shop</a>
               </li>
               <li class="breadcrumb-item text-nowrap active" aria-current="page">Checkout</li>
             </ol>
@@ -26,26 +26,25 @@
       <div class="row">
         <section class="col-lg-8">
           <!-- Steps-->
-          <div class="steps steps-light pt-2 pb-3 mb-5"><a class="step-item active" href="shop-cart.html">
+          <div class="steps steps-light pt-2 pb-3 mb-5"><a class="step-item active" href="includes/shop-cart.php">
               <div class="step-progress"><span class="step-count">1</span></div>
-              <div class="step-label"><i class="czi-cart"></i>Cart</div></a><a class="step-item active current" href="checkout-details.html">
+              <div class="step-label"><i class="czi-cart"></i>Cart</div></a><a class="step-item active current" href="#">
               <div class="step-progress"><span class="step-count">2</span></div>
-              <div class="step-label"><i class="czi-user-circle"></i>Your details</div></a><a class="step-item" href="checkout-shipping.html">
+              <div class="step-label"><i class="czi-user-circle"></i>Your details</div></a><span class="step-item">
+             
               <div class="step-progress"><span class="step-count">3</span></div>
-              <div class="step-label"><i class="czi-package"></i>Shipping</div></a><a class="step-item" href="checkout-payment.html">
+              <div class="step-label"><i class="czi-card"></i>Payment</div></span><span class="step-item">
               <div class="step-progress"><span class="step-count">4</span></div>
-              <div class="step-label"><i class="czi-card"></i>Payment</div></a><a class="step-item" href="checkout-review.html">
-              <div class="step-progress"><span class="step-count">5</span></div>
-              <div class="step-label"><i class="czi-check-circle"></i>Review</div></a></div>
+              <div class="step-label"><i class="czi-check-circle"></i>Review</div></span></div>
           <!-- Autor info-->
-          <div class="d-sm-flex justify-content-between align-items-center bg-secondary p-4 rounded-lg mb-grid-gutter">
+          <!-- <div class="d-sm-flex justify-content-between align-items-center bg-secondary p-4 rounded-lg mb-grid-gutter">
             <div class="media align-items-center">
               <div class="img-thumbnail rounded-circle position-relative" style="width: 6.375rem;"><span class="badge badge-warning" data-toggle="tooltip" title="Reward points">384</span><img class="rounded-circle" src="img/shop/account/avatar.jpg" alt="Susan Gardner"></div>
               <div class="media-body pl-3">
                 <h3 class="font-size-base mb-0">Susan Gardner</h3><span class="text-accent font-size-sm">s.gardner@example.com</span>
               </div>
             </div><a class="btn btn-light btn-sm btn-shadow mt-3 mt-sm-0" href="account-profile.html"><i class="czi-edit mr-2"></i>Edit profile</a>
-          </div>
+          </div> -->
           <!-- Shipping address-->
           <h2 class="h6 pt-1 pb-3 mb-3 border-bottom">Shipping address</h2>
           <div class="row">
@@ -88,12 +87,9 @@
                 <label for="checkout-country">Country</label>
                 <select class="form-control custom-select" id="checkout-country">
                   <option>Choose country</option>
-                  <option>Australia</option>
+                  
                   <option>Canada</option>
-                  <option>France</option>
-                  <option>Germany</option>
-                  <option>Switzerland</option>
-                  <option>USA</option>
+                  
                 </select>
               </div>
             </div>
@@ -104,11 +100,8 @@
                 <label for="checkout-city">Country</label>
                 <select class="form-control custom-select" id="checkout-city">
                   <option>Choose city</option>
-                  <option>Amsterdam</option>
-                  <option>Berlin</option>
-                  <option>Geneve</option>
-                  <option>New York</option>
-                  <option>Paris</option>
+                  
+                  <option>LONDON</option>
                 </select>
               </div>
             </div>
@@ -133,15 +126,62 @@
               </div>
             </div>
           </div>
-          <h6 class="mb-3 py-3 border-bottom">Billing address</h6>
-          <div class="custom-control custom-checkbox">
-            <input class="custom-control-input" type="checkbox" checked id="same-address">
-            <label class="custom-control-label" for="same-address">Same as shipping address</label>
+         <hr>
+         <br>
+         <br>
+          <h2 class="h6 pb-3 mb-2">Choose shipping method</h2>
+          <div class="table-responsive">
+            <table class="table table-hover font-size-sm border-bottom">
+              <thead>
+                <tr>
+                  <th class="align-middle"></th>
+                  <th class="align-middle">Shipping method</th>
+                  <th class="align-middle">Delivery time</th>
+                  <th class="align-middle">Handling fee</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="custom-control custom-radio mb-4">
+                      <input class="custom-control-input" type="radio" id="courier" name="shipping-method" checked>
+                      <label class="custom-control-label" for="courier"></label>
+                    </div>
+                  </td>
+                  <td class="align-middle"><span class="text-dark font-weight-medium">Courier</span><br><span class="text-muted">All addresses (default zone), United States &amp; Canada</span></td>
+                  <td class="align-middle">2 - 4 days</td>
+                  <td class="align-middle">$26.50</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="custom-control custom-radio mb-4">
+                      <input class="custom-control-input" type="radio" id="local" name="shipping-method">
+                      <label class="custom-control-label" for="local"></label>
+                    </div>
+                  </td>
+                  <td class="align-middle"><span class="text-dark font-weight-medium">Local Shipping</span><br><span class="text-muted">All addresses (default zone), United States &amp; Canada</span></td>
+                  <td class="align-middle">up to one week</td>
+                  <td class="align-middle">$10.00</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="custom-control custom-radio mb-4">
+                      <input class="custom-control-input" type="radio" id="flat" name="shipping-method">
+                      <label class="custom-control-label" for="flat"></label>
+                    </div>
+                  </td>
+                  <td class="align-middle"><span class="text-dark font-weight-medium">Flat Rate</span><br><span class="text-muted">All addresses (default zone)</span></td>
+                  <td class="align-middle">5 - 7 days</td>
+                  <td class="align-middle">$33.85</td>
+                </tr>
+                
+              </tbody>
+            </table>
           </div>
           <!-- Navigation (desktop)-->
           <div class="d-none d-lg-flex pt-4 mt-3">
-            <div class="w-50 pr-3"><a class="btn btn-secondary btn-block" href="shop-cart.html"><i class="czi-arrow-left mt-sm-0 mr-1"></i><span class="d-none d-sm-inline">Back to Cart</span><span class="d-inline d-sm-none">Back</span></a></div>
-            <div class="w-50 pl-2"><a class="btn btn-primary btn-block" href="checkout-shipping.html"><span class="d-none d-sm-inline">Proceed to Shipping</span><span class="d-inline d-sm-none">Next</span><i class="czi-arrow-right mt-sm-0 ml-1"></i></a></div>
+            <div class="w-50 pr-3"><a class="btn btn-secondary btn-block" href="includes/shop-cart.php"><i class="czi-arrow-left mt-sm-0 mr-1"></i><span class="d-none d-sm-inline">Back to Cart</span><span class="d-inline d-sm-none">Back</span></a></div>
+            <div class="w-50 pl-2"><a class="btn btn-primary btn-block" href="includes/checkout-payment.php"><span class="d-none d-sm-inline">Proceed to Payments</span><span class="d-inline d-sm-none">Next</span><i class="czi-arrow-right mt-sm-0 ml-1"></i></a></div>
           </div>
         </section>
         <!-- Sidebar-->
@@ -195,8 +235,8 @@
       <div class="row d-lg-none">
         <div class="col-lg-8">
           <div class="d-flex pt-4 mt-3">
-            <div class="w-50 pr-3"><a class="btn btn-secondary btn-block" href="shop-cart.html"><i class="czi-arrow-left mt-sm-0 mr-1"></i><span class="d-none d-sm-inline">Back to Cart</span><span class="d-inline d-sm-none">Back</span></a></div>
-            <div class="w-50 pl-2"><a class="btn btn-primary btn-block" href="checkout-shipping.html"><span class="d-none d-sm-inline">Proceed to Shipping</span><span class="d-inline d-sm-none">Next</span><i class="czi-arrow-right mt-sm-0 ml-1"></i></a></div>
+            <div class="w-50 pr-3"><a class="btn btn-secondary btn-block" href="includes/shop-cart.php"><i class="czi-arrow-left mt-sm-0 mr-1"></i><span class="d-none d-sm-inline">Back to Cart</span><span class="d-inline d-sm-none">Back</span></a></div>
+            <div class="w-50 pl-2"><a class="btn btn-primary btn-block" href="includes/checkout-payment.php"><span class="d-none d-sm-inline">Proceed to Payment</span><span class="d-inline d-sm-none">Next</span><i class="czi-arrow-right mt-sm-0 ml-1"></i></a></div>
           </div>
         </div>
       </div>
