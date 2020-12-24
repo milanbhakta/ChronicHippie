@@ -37,66 +37,52 @@
               <div class="step-label"><i class="czi-check-circle"></i>Review</div></span></div>
           <!-- Order details-->
           <h2 class="h6 pt-1 pb-3 mb-3 border-bottom">Review your order</h2>
+          <?php
+                  $cart=$db->query("SELECT * FROM cart WHERE id='{$cart_id}'");
+                  $cartitems=mysqli_fetch_assoc($cart);
+                  $nums=mysqli_num_rows($cart);
+
+                  if(!empty($cartitems)){
+                  $previous_items=json_decode($cartitems['items'],true);
+                                    $i=1;
+                  $sub_total=0;
+                  $item_count=0;
+                } 
+                
+
+                ?>
+                <?php
+                  foreach($previous_items as $item){
+                    $product_id=$item['id'];
+                    $productQ=$db->query("SELECT * FROM product WHERE id='{$product_id}'");
+                    $product=mysqli_fetch_assoc($productQ);
+                   
+                   ?>
           <!-- Item-->
           <div class="d-sm-flex justify-content-between my-4 pb-3 border-bottom">
-            <div class="media media-ie-fix d-block d-sm-flex text-center text-sm-left"><a class="d-inline-block mx-auto mr-sm-4" href="shop-single-v1.html" style="width: 10rem;"><img src="img/shop/cart/01.jpg" alt="Product"></a>
+            <div class="media media-ie-fix d-block d-sm-flex text-center text-sm-left"><a class="d-inline-block mx-auto mr-sm-4" href="includes/productdetails.php?id=<?=$product['id']?>" style="width: 10rem;"><img src="<?=$product['img_src']?>" alt="Product"></a>
               <div class="media-body pt-2">
-                <h3 class="product-title font-size-base mb-2"><a href="shop-single-v1.html">Women Colorblock Sneakers</a></h3>
-                <div class="font-size-sm"><span class="text-muted mr-2">Size:</span>8.5</div>
-                <div class="font-size-sm"><span class="text-muted mr-2">Color:</span>White &amp; Blue</div>
-                <div class="font-size-lg text-accent pt-2">$154.<small>00</small></div>
+                <h3 class="product-title font-size-base mb-2"><a href="includes/productdetails.php?id=<?=$product['id']?>"><?=$product['title']?></a></h3>
+                <div class="font-size-sm"><span class="text-muted mr-2">Size:</span><?=$item['size']?></div>
+                <!-- <div class="font-size-sm"><span class="text-muted mr-2">Color:</span>White &amp; Blue</div> -->
+                <div class="font-size-lg text-accent pt-2">$<?=number_format($item['quantity']*$product[$size],2)?></div>
               </div>
             </div>
             <div class="pt-2 pt-sm-0 pl-sm-3 mx-auto mx-sm-0 text-center text-sm-right" style="max-width: 9rem;">
-              <p class="mb-0"><span class="text-muted font-size-sm">Quantity:</span><span>&nbsp;1</span></p>
+              <p class="mb-0"><span class="text-muted font-size-sm">Quantity:</span><span>&nbsp;<?=$item['quantity']?></span></p>
               <button class="btn btn-link px-0" type="button"><i class="czi-edit mr-2"></i><span class="font-size-sm">Edit</span></button>
             </div>
           </div>
-          <!-- Item-->
-          <div class="d-sm-flex justify-content-between my-4 pb-3 border-bottom">
-            <div class="media media-ie-fix d-block d-sm-flex text-center text-sm-left"><a class="d-inline-block mx-auto mr-sm-4" href="shop-single-v1.html" style="width: 10rem;"><img src="img/shop/cart/02.jpg" alt="Product"></a>
-              <div class="media-body pt-2">
-                <h3 class="product-title font-size-base mb-2"><a href="shop-single-v1.html">TH Jeans City Backpack</a></h3>
-                <div class="font-size-sm"><span class="text-muted mr-2">Brand:</span>Tommy Hilfiger</div>
-                <div class="font-size-sm"><span class="text-muted mr-2">Color:</span>Khaki</div>
-                <div class="font-size-lg text-accent pt-2">$79.<small>50</small></div>
-              </div>
-            </div>
-            <div class="pt-2 pt-sm-0 pl-sm-3 mx-auto mx-sm-0 text-center text-sm-right" style="max-width: 9rem;">
-              <p class="mb-0"><span class="text-muted font-size-sm">Quantity:</span><span>&nbsp;1</span></p>
-              <button class="btn btn-link px-0" type="button"><i class="czi-edit mr-2"></i><span class="font-size-sm">Edit</span></button>
-            </div>
-          </div>
-          <!-- Item-->
-          <div class="d-sm-flex justify-content-between my-4 pb-3 border-bottom">
-            <div class="media media-ie-fix d-block d-sm-flex text-center text-sm-left"><a class="d-inline-block mx-auto mr-sm-4" href="shop-single-v1.html" style="width: 10rem;"><img src="img/shop/cart/03.jpg" alt="Product"></a>
-              <div class="media-body pt-2">
-                <h3 class="product-title font-size-base mb-2"><a href="shop-single-v1.html">3-Color Sun Stash Hat</a></h3>
-                <div class="font-size-sm"><span class="text-muted mr-2">Brand:</span>The North Face</div>
-                <div class="font-size-sm"><span class="text-muted mr-2">Color:</span>Pink / Beige / Dark blue</div>
-                <div class="font-size-lg text-accent pt-2">$22.<small>50</small></div>
-              </div>
-            </div>
-            <div class="pt-2 pt-sm-0 pl-sm-3 mx-auto mx-sm-0 text-center text-sm-right" style="max-width: 9rem;">
-              <p class="mb-0"><span class="text-muted font-size-sm">Quantity:</span><span>&nbsp;1</span></p>
-              <button class="btn btn-link px-0" type="button"><i class="czi-edit mr-2"></i><span class="font-size-sm">Edit</span></button>
-            </div>
-          </div>
-          <!-- Item-->
-          <div class="d-sm-flex justify-content-between my-4 pb-3 border-bottom">
-            <div class="media media-ie-fix d-block d-sm-flex text-center text-sm-left"><a class="d-inline-block mx-auto mr-sm-4" href="shop-single-v1.html" style="width: 10rem;"><img src="img/shop/cart/04.jpg" alt="Product"></a>
-              <div class="media-body pt-2">
-                <h3 class="product-title font-size-base mb-2"><a href="shop-single-v1.html">Cotton Polo Regular Fit</a></h3>
-                <div class="font-size-sm"><span class="text-muted mr-2">Size:</span>42</div>
-                <div class="font-size-sm"><span class="text-muted mr-2">Color:</span>Light blue</div>
-                <div class="font-size-lg text-accent pt-2">$9.<small>00</small></div>
-              </div>
-            </div>
-            <div class="pt-2 pt-sm-0 pl-sm-3 mx-auto mx-sm-0 text-center text-sm-right" style="max-width: 9rem;">
-              <p class="mb-0"><span class="text-muted font-size-sm">Quantity:</span><span>&nbsp;1</span></p>
-              <button class="btn btn-link px-0" type="button"><i class="czi-edit mr-2"></i><span class="font-size-sm">Edit</span></button>
-            </div>
-          </div>
+                    
+              <?php
+              $item_count+=$item['quantity'];
+              $sub_total+=($product[$size]*$item['quantity']);
+                  }
+              $tax=TAXRATE * $sub_total;
+              $tax=number_format($tax,2);
+              $grand_total=$tax+$sub_total;
+              $grand_total=number_format($grand_total,2);    
+                ?>
           <!-- Client details-->
           <div class="bg-secondary rounded-lg px-4 pt-4 pb-2">
             <div class="row">
@@ -127,12 +113,12 @@
           <div class="cz-sidebar-static rounded-lg box-shadow-lg ml-lg-auto">
             <h2 class="h6 text-center mb-4">Order summary</h2>
             <ul class="list-unstyled font-size-sm pb-2 border-bottom">
-              <li class="d-flex justify-content-between align-items-center"><span class="mr-2">Subtotal:</span><span class="text-right">$265.<small>00</small></span></li>
+              <li class="d-flex justify-content-between align-items-center"><span class="mr-2">Subtotal:</span><span class="text-right">$<?=$sub_total?>.<small>00</small></span></li>
               <li class="d-flex justify-content-between align-items-center"><span class="mr-2">Shipping:</span><span class="text-right">—</span></li>
-              <li class="d-flex justify-content-between align-items-center"><span class="mr-2">Taxes:</span><span class="text-right">$9.<small>50</small></span></li>
+              <li class="d-flex justify-content-between align-items-center"><span class="mr-2">Taxes:</span><span class="text-right">$<?=$tax?></span></li>
               <li class="d-flex justify-content-between align-items-center"><span class="mr-2">Discount:</span><span class="text-right">—</span></li>
             </ul>
-            <h3 class="font-weight-normal text-center my-4">$274.<small>50</small></h3>
+            <h3 class="font-weight-normal text-center my-4">$<?=$grand_total?></h3>
             <form class="needs-validation" method="post" novalidate>
               <div class="form-group">
                 <input class="form-control" type="text" placeholder="Promo code" required>

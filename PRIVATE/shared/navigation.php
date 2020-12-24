@@ -125,16 +125,16 @@
             </div>
             <div class="navbar-toolbar d-flex flex-shrink-0 align-items-center">
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"><span class="navbar-toggler-icon"></span></button><a class="navbar-tool navbar-stuck-toggler" href="#"><span class="navbar-tool-tooltip">Expand menu</span>
-                <div class="navbar-tool-icon-box"><i class="navbar-tool-icon czi-menu"></i></div></a><a class="navbar-tool d-none d-lg-flex" href="account-wishlist.html"><span class="navbar-tool-tooltip">Wishlist</span>
+                <!-- <div class="navbar-tool-icon-box"><i class="navbar-tool-icon czi-menu"></i></div></a><a class="navbar-tool d-none d-lg-flex" href=""><span class="navbar-tool-tooltip">Wishlist</span> -->
                 <div class="navbar-tool-icon-box"><i class="navbar-tool-icon czi-heart"></i></div></a><a class="navbar-tool ml-1 ml-lg-0 mr-n1 mr-lg-2" href="#signin-modal" data-toggle="modal">
-                <div class="navbar-tool-icon-box"><i class="navbar-tool-icon czi-user"></i></div>
-                <div class="navbar-tool-text ml-n3"><small>Hello, Sign in</small>My Account</div></a>
+                <!-- <div class="navbar-tool-icon-box"><i class="navbar-tool-icon czi-user"></i></div> -->
+                <!-- <div class="navbar-tool-text ml-n3"><small>Hello, Sign in</small>My Account</div></a> -->
 
 
                 <?php
                   $cart=$db->query("SELECT * FROM cart WHERE id='{$cart_id}'");
                   $cartitems=mysqli_fetch_assoc($cart);
-               
+                  $previous_items=[];
 
                   if(!empty($cartitems)){
                   $previous_items=json_decode($cartitems['items'],true);
@@ -143,7 +143,7 @@
                 $item_count=0;
                 $sub_total=0;
                 ?>
-              <div class="navbar-tool dropdown ml-3"><a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="/includes/shop-cart.php"><span class="navbar-tool-label"><?=$nums;?></span><i class="navbar-tool-icon czi-cart"></i></a><a class="navbar-tool-text" href="shop-cart.html"><small>My Cart</small></a>
+              <div class="navbar-tool dropdown ml-3"><a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="includes/shop-cart.php"><span class="navbar-tool-label"><?=$nums;?></span><i class="navbar-tool-icon czi-cart"></i></a><a class="navbar-tool-text" href="includes/shop-cart.php">My Cart</a>
                 <!-- Cart dropdown-->
                 <div class="dropdown-menu dropdown-menu-right" style="width: 20rem;">
 
@@ -160,9 +160,9 @@
                       
                       <div class="widget-cart-item pb-2 border-bottom">
                         <button class="close text-danger" type="button" aria-label="Remove"><span aria-hidden="true">&times;</span></button>
-                        <div class="media align-items-center"><a class="d-block mr-2" href="shop-single-v1.html"><img width="64" src="<?=$product['img_src']?>" alt="Product"/></a>
+                        <div class="media align-items-center"><a class="d-block mr-2" href="includes/productdetails.php?id=<?=$product['id']?>"><img width="64" src="<?=$product['img_src']?>" alt="Product"/></a>
                           <div class="media-body">
-                            <h6 class="widget-product-title"><a href="shop-single-v1.html"><?=$product['title']?></a></h6>
+                            <h6 class="widget-product-title"><a href="includes/productdetails.php?id=<?=$product['id']?>"><?=$product['title']?></a></h6>
                             <div class="widget-product-meta"><span class="text-accent mr-2">
                             <?php
                             $size=$item['size'];
@@ -223,13 +223,13 @@
                     <div class="d-flex flex-wrap flex-md-nowrap">
                     <?php
                     
-                      while($parent = mysqli_fetch_assoc($pquery)):
+                      while($product = mysqli_fetch_assoc($pquery)):
                     
                       ?>
-                       <?php $img=$parent['cat_image']; ?> 
+                       <?php $img=$product['cat_image']; ?> 
                        <div class="mega-dropdown-column pt-4 px-3">
-                        <div class="widget widget-links"><a class="d-block overflow-hidden rounded-lg mb-3" href="includes/categories.php?category=<?=$parent['id']?>"><img src="img/<?php echo $img?>"alt=""/></a>
-                          <h6 class="font-size-base mb-2"> <?php echo $parent['category'];?> </h6>
+                        <div class="widget widget-links"><a class="d-block overflow-hidden rounded-lg mb-3" href="includes/categories.php?category=<?=$product['id']?>"><img src="img/<?php echo $img?>"alt=""/></a>
+                          <h6 class="font-size-base mb-2"> <?php echo $product['category'];?> </h6>
                          
                         </div>
                       </div>

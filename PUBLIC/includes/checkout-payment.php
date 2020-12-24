@@ -79,38 +79,51 @@
           <div class="cz-sidebar-static rounded-lg box-shadow-lg ml-lg-auto">
             <div class="widget mb-3">
               <h2 class="widget-title text-center">Order summary</h2>
-              <div class="media align-items-center pb-2 border-bottom"><a class="d-block mr-2" href="shop-single-v1.html"><img width="64" src="img/shop/cart/widget/01.jpg" alt="Product"/></a>
+              <?php
+                  $cart=$db->query("SELECT * FROM cart WHERE id='{$cart_id}'");
+                  $cartitems=mysqli_fetch_assoc($cart);
+                  $nums=mysqli_num_rows($cart);
+
+                  if(!empty($cartitems)){
+                  $previous_items=json_decode($cartitems['items'],true);
+                                    $i=1;
+                  $sub_total=0;
+                  $item_count=0;
+                } 
+              
+
+                ?>
+                <?php
+                  foreach($previous_items as $item){
+                    $product_id=$item['id'];
+                    $productQ=$db->query("SELECT * FROM product WHERE id='{$product_id}'");
+                    $product=mysqli_fetch_assoc($productQ);
+                   
+                   ?>
+              <div class="media align-items-center pb-2 border-bottom"><a class="d-block mr-2" href="includes/productdetails.php?id=<?=$product['id']?>"><img width="64" src="<?=$product['img_src']?>" alt="Product"/></a>
                 <div class="media-body">
-                  <h6 class="widget-product-title"><a href="shop-single-v1.html">Women Colorblock Sneakers</a></h6>
-                  <div class="widget-product-meta"><span class="text-accent mr-2">$150.<small>00</small></span><span class="text-muted">x 1</span></div>
+                  <h6 class="widget-product-title"><a href="includes/productdetails.php?id=<?=$product['id']?>"><?=$product['title']?></a></h6>
+                  <div class="widget-product-meta"><span class="text-accent mr-2">$<?=$item['quantity']*$product[$size]?><small>.00</small></span><span class="text-muted">x <?=$item['quantity']?></span></div>
                 </div>
               </div>
-              <div class="media align-items-center py-2 border-bottom"><a class="d-block mr-2" href="shop-single-v1.html"><img width="64" src="img/shop/cart/widget/02.jpg" alt="Product"/></a>
-                <div class="media-body">
-                  <h6 class="widget-product-title"><a href="shop-single-v1.html">TH Jeans City Backpack</a></h6>
-                  <div class="widget-product-meta"><span class="text-accent mr-2">$79.<small>50</small></span><span class="text-muted">x 1</span></div>
-                </div>
-              </div>
-              <div class="media align-items-center py-2 border-bottom"><a class="d-block mr-2" href="shop-single-v1.html"><img width="64" src="img/shop/cart/widget/03.jpg" alt="Product"/></a>
-                <div class="media-body">
-                  <h6 class="widget-product-title"><a href="shop-single-v1.html">3-Color Sun Stash Hat</a></h6>
-                  <div class="widget-product-meta"><span class="text-accent mr-2">$22.<small>50</small></span><span class="text-muted">x 1</span></div>
-                </div>
-              </div>
-              <div class="media align-items-center py-2 border-bottom"><a class="d-block mr-2" href="shop-single-v1.html"><img width="64" src="img/shop/cart/widget/04.jpg" alt="Product"/></a>
-                <div class="media-body">
-                  <h6 class="widget-product-title"><a href="shop-single-v1.html">Cotton Polo Regular Fit</a></h6>
-                  <div class="widget-product-meta"><span class="text-accent mr-2">$9.<small>00</small></span><span class="text-muted">x 1</span></div>
-                </div>
-              </div>
+              <?php
+              $item_count+=$item['quantity'];
+              $sub_total+=($product[$size]*$item['quantity']);
+                  }
+              $tax=TAXRATE * $sub_total;
+              $tax=number_format($tax,2);
+              $grand_total=$tax+$sub_total; 
+              
+              $grand_total=number_format($grand_total,2);
+                ?>
             </div>
             <ul class="list-unstyled font-size-sm pb-2 border-bottom">
-              <li class="d-flex justify-content-between align-items-center"><span class="mr-2">Subtotal:</span><span class="text-right">$265.<small>00</small></span></li>
+              <li class="d-flex justify-content-between align-items-center"><span class="mr-2">Subtotal:</span><span class="text-right">$<?=$sub_total?>.<small>00</small></span></li>
               <li class="d-flex justify-content-between align-items-center"><span class="mr-2">Shipping:</span><span class="text-right">—</span></li>
-              <li class="d-flex justify-content-between align-items-center"><span class="mr-2">Taxes:</span><span class="text-right">$9.<small>50</small></span></li>
+              <li class="d-flex justify-content-between align-items-center"><span class="mr-2">Taxes:</span><span class="text-right">$<?=$tax?></span></li>
               <li class="d-flex justify-content-between align-items-center"><span class="mr-2">Discount:</span><span class="text-right">—</span></li>
             </ul>
-            <h3 class="font-weight-normal text-center my-4">$274.<small>50</small></h3>
+            <h3 class="font-weight-normal text-center my-4">$<?=$grand_total?></h3>
             <form class="needs-validation" method="post" novalidate>
               <div class="form-group">
                 <input class="form-control" type="text" placeholder="Promo code" required>

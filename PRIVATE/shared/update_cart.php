@@ -50,7 +50,7 @@ if(!empty($updated_items)){
     $_SESSION['success_flash']='Your S!';
 }
 if(empty($updated_items)){
-    //$db->query("DELETE from cart where id='{$cart_id}'");
-    //setcookie("CART_COOKIE",'',1,"/",$domian,false);
+    $db->query("DELETE from cart where id='{$cart_id}'");
+    setcookie("CART_COOKIE",'',1,"/",$domian,false);
 }
 ?>

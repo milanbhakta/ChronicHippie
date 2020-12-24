@@ -34,14 +34,14 @@
                   $cart=$db->query("SELECT * FROM cart WHERE id='{$cart_id}'");
                   $cartitems=mysqli_fetch_assoc($cart);
                   $nums=mysqli_num_rows($cart);
-
+                  $previous_items=[];
                   if(!empty($cartitems)){
                   $previous_items=json_decode($cartitems['items'],true);
                                     $i=1;
                   $sub_total=0;
                   $item_count=0;
                 } 
-                
+                $nums=count($previous_items);
 
                 ?>
                 <?php
@@ -52,10 +52,10 @@
                    
                    ?>
  <!-- Item-->
- <div class="d-sm-flex justify-content-between align-items-center my-4 pb-3 border-bottom">
-            <div class="media media-ie-fix d-block d-sm-flex align-items-center text-center text-sm-left"><a class="d-inline-block mx-auto mr-sm-4" href="shop-single-v1.html" style="width: 10rem;"><img src="<?=$product['img_src']?>" alt="Product"></a>
+          <div class="d-sm-flex justify-content-between align-items-center my-4 pb-3 border-bottom">
+            <div class="media media-ie-fix d-block d-sm-flex align-items-center text-center text-sm-left"><a class="d-inline-block mx-auto mr-sm-4" href="includes/productdetails.php?id=<?=$product['id']?>" style="width: 10rem;"><img src="<?=$product['img_src']?>" alt="Product"></a>
               <div class="media-body pt-2">
-                <h3 class="product-title font-size-base mb-2"><a href="shop-single-v1.html"><?=$product['title']?></a></h3>
+                <h3 class="product-title font-size-base mb-2"><a href="includes/productdetails.php?id=<?=$product['id']?>"><?=$product['title']?></a></h3>
                 <div class="font-size-sm"><span class="text-muted mr-2">Size:</span><?=$item['size']?></div>
                 <!-- <div class="font-size-sm"><span class="text-muted mr-2">Color:</span>White &amp; Blue</div> -->
                 <?php
@@ -63,7 +63,7 @@
                  $size=$item['size'];
                 
                 ?>
-                <div class="font-size-lg text-accent pt-2">$<?=$item['quantity']*$product[$size]?></div>
+                <div class="font-size-lg text-accent pt-2">$<?=number_format($item['quantity']*$product[$size],2)?></div>
               </div>
             </div>
             <div class="pt-2 pt-sm-0 pl-sm-3 mx-auto mx-sm-0 text-center text-sm-left" style="max-width: 9rem;">
